@@ -1,0 +1,19 @@
+Country,Model,Manuf,Units,UnitCost,TotalSales
+USA,Road Bike,Trek,5000,2200.0,11000.0
+USA,Road Bike,Cannondale,2000,2100.0,4200.0
+USA,Mountain Bike,Trek,6000,1200.0,7200.0
+USA,Mountain Bike,Cannondale,4000,2700.0,10800.0
+USA,Hybrid,Trek,4500,650.0,2925.0
+France,Road Bike,Trek,3400,2500.0,8500.0
+France,Road Bike,Cannondale,900,3700.0,3330.0
+France,Mountain Bike,Trek,5600,1300.0,7280.0
+France,Mountain Bike,Cannondale,800,1899.0,1519.2
+France,Hybrid,Trek,1100,540.0,594.0
+United Kingdom,Road Bike,Trek,2444,2100.0,5132.4
+United Kingdom,Road Bike,Cannondale,1200,2123.0,2547.6
+United Kingdom,Hybrid,Trek,800,490.0,392.0
+United Kingdom,Hybrid,Cannondale,500,880.0,440.0
+United Kingdom,Mountain Bike,Trek,1211,1121.0,1357.53
+Italy,Hybrid,Trek,700,690.0,483.0
+Italy,Road Bike,Trek,4500,2890.0,13005.0
+Italy,Mountain Bike,Trek,3400,1877.0,6381.8

@@ -1,0 +1,7 @@
+Patno,Clinic,VisitDate,Weight,HR,DX,Comment
+001,Mayo Clinic,17095,120,78,7,Patient has had a persistent cough for 3 weeks.
+003,HMC,17045,166,58,8,Patient placed on beta-blockers on 7/1/2006
+002,Mayo Clinic,17075,210,68,9,Patient has been on antibiotics for 10 days
+004,HMC,17116,288,88,9,Patient advised to lose some weight
+007,Mayo Clinic,16922,180,54,7,This patient is always under high stress
+050,HMC,16988,199,60,123,Refer this patient to mental health for evaluation

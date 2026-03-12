@@ -1,0 +1,16 @@
+EmpID,Name,Region,Customer,Item,Quantity,UnitCost,TotalSales
+1843,George Smith,North,Barco Corporation,144L,50,8.99,449.5
+1843,George Smith,South,Cost Cutter's,122,100,5.99,599.0
+1843,George Smith,North,Minimart Inc.,188S,3,5199.0,15597.0
+1843,George Smith,North,Barco Corporation,908X,1,5129.0,5129.0
+1843,George Smith,South,Ely Corp.,122L,10,29.95,299.5
+0177,Glenda Johnson,East,Food Unlimited,188X,100,6.99,699.0
+0177,Glenda Johnson,East,Shop and Drop,144L,100,8.99,899.0
+1843,George Smith,South,Cost Cutter's,855W,1,9109.0,9109.0
+9888,Sharon Lu,West,Cost Cutter's,122,50,5.99,299.5
+9888,Sharon Lu,West,Pet's are Us,100W,1000,1.99,1990.0
+0017,Jason Nguyen,East,Roger's Spirits,122L,500,39.99,19995.0
+0017,Jason Nguyen,South,Spirited Spirits,407XX,100,19.95,1995.0
+0177,Glenda Johnson,North,Minimart Inc.,777,5,10.5,52.5
+0177,Glenda Johnson,East,Barco Corporation,733,2,10000.0,20000.0
+1843,George Smith,North,Minimart Inc.,188S,3,5199.0,15597.0
