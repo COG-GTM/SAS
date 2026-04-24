@@ -80,7 +80,8 @@ def example_9_6(dates_df: pd.DataFrame) -> pd.DataFrame:
     df = dates_df.copy()
     if not pd.api.types.is_datetime64_any_dtype(df["DOB"]):
         df["DOB"] = pd.to_datetime(df["DOB"], format="mixed", dayfirst=False)
-    df["Weekday"] = df["DOB"].dt.dayofweek + 1  # SAS: 1=Sun; Python: +1 for Mon=1
+    df["Weekday"] = (df["DOB"].dt.dayofweek + 2) % 7
+    df["Weekday"] = df["Weekday"].replace(0, 7)
     df["DayOfMonth"] = df["DOB"].dt.day
     df["Month"] = df["DOB"].dt.month
     df["Year"] = df["DOB"].dt.year
