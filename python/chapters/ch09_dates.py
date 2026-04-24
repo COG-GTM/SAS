@@ -22,11 +22,17 @@ def example_9_1() -> pd.DataFrame:
     """Read dates in several formats (SAS informats: mmddyy, date9)."""
     path = data_dir() / "dates.txt"
     if path.exists():
-        return pd.read_fwf(
+        df = pd.read_fwf(
             path,
-            colspecs=[(0, 3), (4, 14), (15, 23), (25, 33), (33, 42)],
+            colspecs=[(0, 3), (4, 14), (15, 23), (24, 32), (33, 42)],
             names=["Subject", "DOB", "VisitDate", "TwoDigit", "LastDate"],
+            dtype=str,
         )
+        df["DOB"] = pd.to_datetime(df["DOB"], format="%m/%d/%Y")
+        df["VisitDate"] = pd.to_datetime(df["VisitDate"], format="%m%d%Y")
+        df["TwoDigit"] = pd.to_datetime(df["TwoDigit"], format="%m/%d/%y")
+        df["LastDate"] = pd.to_datetime(df["LastDate"], format="%d%b%Y")
+        return df
     text = """\
 001 10/21/1946 06/15/06 10/1/08 21OCT2016
 002 11/11/1956 06/01/06 07/5/07 15JUL2017
