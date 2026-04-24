@@ -95,9 +95,9 @@ def example_21_12() -> pd.DataFrame:
             "Subj": line1[0:3].strip(),
             "DOB": line1[3:13].strip(),
             "Weight": int(line1[13:16].strip()) if line1[13:16].strip() else np.nan,
-            "HR": int(line2[1:4].strip()) if line2[1:4].strip() else np.nan,
-            "SBP": int(line2[4:7].strip()) if line2[4:7].strip() else np.nan,
-            "DBP": int(line2[7:10].strip()) if line2[7:10].strip() else np.nan,
+            "HR": int(line2[0:3].strip()) if line2[0:3].strip() else np.nan,
+            "SBP": int(line2[3:6].strip()) if line2[3:6].strip() else np.nan,
+            "DBP": int(line2[6:9].strip()) if line2[6:9].strip() else np.nan,
         })
     df = pd.DataFrame(rows)
     df["DOB"] = pd.to_datetime(df["DOB"], format="mixed", dayfirst=False)

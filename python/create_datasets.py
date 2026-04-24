@@ -258,6 +258,7 @@ def _build_blood() -> pd.DataFrame:
         sep=r"\s+",
         names=["Subject", "Gender", "BloodType", "AgeGroup",
                "WBC", "RBC", "Chol"],
+        na_values=["."],
     )
     return df
 
