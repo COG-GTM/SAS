@@ -190,8 +190,9 @@ def example_11_19() -> pd.DataFrame:
 
     def top6_mean(row: pd.Series) -> float:
         vals = row.dropna().sort_values(ascending=False)
-        if len(vals) >= 7:
-            return vals.iloc[:6].mean()
+        if len(vals) >= 3:
+            top = vals.iloc[: len(vals) - 2]
+            return top.mean()
         return np.nan
 
     df["Quiz_Score"] = df[q_cols].apply(top6_mean, axis=1).round(2)

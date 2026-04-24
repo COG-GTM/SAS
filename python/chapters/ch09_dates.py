@@ -20,7 +20,7 @@ from utils.data_helpers import data_dir, print_dataset
 # 9-1 / 9-2: Read Dates.txt with multiple date formats
 def example_9_1() -> pd.DataFrame:
     """Read dates in several formats (SAS informats: mmddyy, date9)."""
-    path = data_dir() / "Dates.txt"
+    path = data_dir() / "dates.txt"
     if path.exists():
         return pd.read_fwf(
             path,
