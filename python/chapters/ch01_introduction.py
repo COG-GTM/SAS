@@ -30,7 +30,7 @@ def example_1_1() -> pd.DataFrame:
 def example_1_3() -> pd.DataFrame:
     """Read Veggies.txt (space-delimited)."""
     return pd.read_csv(
-        data_dir() / "Veggies.txt",
+        data_dir() / "veggies.txt",
         sep=r"\s+",
         names=["VeggieID", "Name", "Code", "Price"],
     )

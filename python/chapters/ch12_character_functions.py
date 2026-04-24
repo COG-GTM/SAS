@@ -8,6 +8,7 @@ SAS Programs: 12-1 through 12-17
 """
 from __future__ import annotations
 
+import re
 
 import numpy as np
 import pandas as pd
@@ -111,7 +112,9 @@ def example_12_10() -> pd.DataFrame:
     """Find first digit in ID strings (SAS ANYDIGIT)."""
     ids = ["ABC123", "XY99ZZ", "NOPE", "7Start"]
     df = pd.DataFrame({"ID": ids})
-    df["Position"] = df["ID"].str.search(r"\d")
+    df["Position"] = df["ID"].apply(
+        lambda x: m.start() if (m := re.search(r"\d", x)) else None
+    )
     df["HasDigit"] = df["Position"].notna()
     return df
 

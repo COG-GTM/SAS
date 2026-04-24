@@ -93,7 +93,7 @@ def example_18_11(blood: pd.DataFrame) -> pd.DataFrame:
     """Gender × (RBC WBC) with labeled statistics."""
     result = (
         blood.groupby("Gender")[["RBC", "WBC"]]
-        .agg(Average=("mean"), Std_Dev=("std"))
+        .agg(["mean", "std"])
     )
     return result.round(2)
 
