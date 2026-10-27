@@ -50,7 +50,7 @@ def test_parquet_and_duckdb_roundtrip(tmp_path):
 
     from sas_examples.config import Config, learn_path
 
-    cfg = Config(tmp_path, tmp_path / "learn")
+    cfg = Config(tmp_path, tmp_path / "learn", tmp_path / "out")
     path = learn_path("Demo", cfg, create_dir=True)
     pd.DataFrame({"x": [1, 2, 3], "g": ["a", "b", "a"]}).to_parquet(path)
     result = duckdb.sql(

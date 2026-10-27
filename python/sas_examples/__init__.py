@@ -5,8 +5,16 @@ from sas_examples.config import (
     data_path,
     get_config,
     learn_path,
+    output_path,
     resolve_sas_path,
 )
 
-__all__ = ["Config", "data_path", "get_config", "learn_path", "resolve_sas_path"]
+__all__ = [
+    "Config",
+    "data_path",
+    "get_config",
+    "learn_path",
+    "output_path",
+    "resolve_sas_path",
+]
 __version__ = "0.1.0"

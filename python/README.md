@@ -27,10 +27,17 @@ All file access goes through `sas_examples.config`:
 |------------|--------------------------|----------------------------|
 | `data_dir` | `<repo>/Data`            | `SAS_EXAMPLES_DATA_DIR`    |
 | `learn_dir`| `<repo>/python/output/learn` | `SAS_EXAMPLES_LEARN_DIR` |
+| `output_dir`| `<repo>/python/output` | `SAS_EXAMPLES_OUTPUT_DIR` |
 
 - `data_path("Veggies.txt")` returns the raw file in `data_dir` (matched
   case-insensitively, since the SAS code and `Data/` disagree on case).
 - `learn_path("Blood")` returns the Parquet file for the rebuilt `Learn.Blood`
   dataset in `learn_dir`.
+- `output_path("prob19_1.html")` returns the path for a generated file
+  (ODS CSV/HTML, exports) in `output_dir`.
 - `resolve_sas_path(r"c:\books\learning\survey.txt")` maps a path literal from
-  the SAS code to one of the two above.
+  the SAS code to one of the above; pass `mode="write"` for outputs such as
+  `ods csv file=...` so they never land in `Data/`.
+
+Defaults only apply when running from a repo checkout (editable install); a
+non-editable install must set the env vars, otherwise `get_config()` raises.
