@@ -1,0 +1,137 @@
+name,kind,path,exists,producers,consumers,notes
+learn.address,learn,,,cd:cd-01,ed2:12-3,
+learn.assign,learn,,,cd:cd-12,ed2:15-13,
+learn.bicycles,learn,,,cd:cd-11,ed2:15-9;ed2:15-10;ed2:15-19;sol:7-7;sol:21-5,
+learn.blood,learn,,,cd:cd-52,ed2:10-7;ed2:11-2;ed2:11-3;ed2:11-11;ed2:11-12;ed2:15-20;ed2:16-1;ed2:16-2;ed2:16-3;ed2:16-4;ed2:16-5;ed2:16-6;ed2:16-7;ed2:16-8;ed2:16-9;ed2:16-10;ed2:16-11;ed2:16-12;ed2:16-13;ed2:16-16;ed2:16-17;ed2:17-10;ed2:17-11;ed2:18-1;ed2:18-2;ed2:18-3;ed2:18-4;ed2:18-5;ed2:18-6;ed2:18-7;ed2:18-8;ed2:18-9;ed2:18-10;ed2:18-11;ed2:18-12;ed2:18-13;ed2:18-14;ed2:18-15;ed2:18-16;ed2:18-17;ed2:19-4;ed2:19-5;ed2:19-6;ed2:20-1;ed2:20-2;ed2:20-3;ed2:20-4;ed2:20-10;ed2:20-11;ed2:20-12;ed2:25-2;ed2:25-11;sol:7-5;sol:10-1;sol:10-3;sol:11-3;sol:14-1;sol:15-1;sol:15-7;sol:17-1;sol:17-3;sol:17-7;sol:26-9,
+learn.bloodpressure,learn,,,cd:cd-53,sol:15-5;sol:22-1;sol:22-3,
+learn.careless,learn,,,cd:cd-03,ed2:13-4,
+learn.char_num,learn,,,cd:cd-38,sol:11-11,
+learn.chars,learn,,,cd:cd-02,ed2:11-13;ed2:13-3,
+learn.cleaning,learn,,,cd:cd-04,ed2:12-11,
+learn.clinic,learn,,,cd:cd-15,ed2:24-1;ed2:24-3;ed2:24-4;ed2:24-8,
+learn.codes,learn,,,cd:cd-55;ed2:22-9,ed2:22-10;ed2:22-12,written by more than one program
+learn.college,learn,,,cd:cd-56,sol:16-1;sol:16-3;sol:16-5;sol:16-7;sol:17-5;sol:18-1;sol:18-3;sol:18-5;sol:18-7;sol:18-9;sol:19-1;sol:19-3,
+learn.dailyprices,learn,,,cd:cd-64,sol:24-1;sol:24-3;sol:24-5;sol:24-7,
+learn.demographic,learn,,,cd:cd-19,ed2:26-4;ed2:26-5;ed2:26-6;ed2:26-7;ed2:26-8;ed2:26-9;ed2:26-13,
+learn.demographic_id,learn,,,cd:cd-32,sol:10-13,
+learn.dxcodes,learn,,,cd:cd-60,sol:22-7,
+learn.endofyear,learn,,,cd:cd-62,ed2:11-6,
+learn.errors,learn,,,cd:cd-43,sol:12-11,
+learn.expose,learn,,,cd:cd-44,ed2:13-9,
+learn.first,learn,,,cd:cd-68,sol:26-7,
+learn.fitness,learn,,,cd:cd-57,sol:25-5,
+learn.grades,learn,,,cd:cd-58,,
+learn.grouping,learn,,,cd:cd-71,ed2:17-5;ed2:17-7,
+learn.gym,learn,,,cd:cd-59,sol:10-7;sol:22-9,
+learn.health,learn,,,cd:cd-18,ed2:26-1;ed2:26-2;ed2:26-3;ed2:26-4;ed2:26-5;ed2:26-6;ed2:26-7;ed2:26-8;ed2:26-9;ed2:26-11;ed2:26-12;sol:11-1,
+learn.hosp,learn,,,cd:cd-16,cd:cd-17;ed2:9-9;sol:9-5;sol:9-7;sol:14-3;sol:15-3,
+learn.hosp_discharge,learn,,,cd:cd-17,ed2:9-10;ed2:9-11,
+learn.insurance,learn,,,cd:cd-27,ed2:26-13,
+learn.inventory,learn,,,cd:cd-29,sol:10-5;sol:10-9;sol:10-11;sol:26-1,
+learn.left,learn,,,cd:cd-65,sol:26-5,
+learn.manyper,learn,,,cd:cd-06;ed2:23-1,ed2:23-2;ed2:23-5,written by more than one program
+learn.medical,learn,,,cd:cd-10,ed2:7-6;ed2:15-1;ed2:15-2;ed2:15-3;ed2:15-4;ed2:15-5;ed2:15-6;ed2:15-7;ed2:15-8;ed2:15-17;ed2:15-18;sol:9-11;sol:9-13,
+learn.missing,learn,,,cd:cd-67,ed2:18-19;ed2:18-20;ed2:18-21;ed2:18-22,
+learn.mixed,learn,,,cd:cd-45,ed2:12-2,
+learn.mixed_units,learn,,,cd:cd-46,ed2:12-8,
+learn.month_day_year,learn,,,cd:cd-08,ed2:9-7;ed2:9-8,
+learn.names_and_more,learn,,,cd:cd-40,sol:12-3;sol:12-5;sol:12-15,
+learn.narrow,learn,,,cd:cd-63,,
+learn.new_members,learn,,,cd:cd-20,,
+learn.new_members_order,learn,,,cd:cd-28,,
+learn.newproducts,learn,,,cd:cd-31,sol:10-5,
+learn.nines,learn,,,cd:cd-51,sol:13-3,
+learn.numeric,learn,,,cd:cd-54,ed2:11-14,
+learn.oneper,learn,,,cd:cd-05,cd:cd-06;ed2:23-1;ed2:23-3;ed2:23-4,
+learn.perm,learn,,,sol:4-1,,
+learn.personal,learn,,,cd:cd-50,sol:12-17,
+learn.phone,learn,,,cd:cd-41,ed2:12-6;ed2:12-7,
+learn.psych,learn,,,cd:cd-37,sol:11-5,
+learn.purchase,learn,,,cd:cd-30,sol:10-9;sol:10-11,
+learn.right,learn,,,cd:cd-66,sol:26-5,
+learn.sales,learn,,,cd:cd-09;ed2:14-8;ed2:14-9,ed2:12-1;ed2:14-1;ed2:14-2;ed2:14-3;ed2:14-4;ed2:14-5;ed2:14-6;ed2:14-7;ed2:14-8;ed2:14-9;ed2:14-10;ed2:14-11;ed2:14-13;ed2:14-14;ed2:14-15;ed2:14-17;ed2:15-11;ed2:15-12;ed2:15-14;ed2:15-15;ed2:15-16;ed2:18-18;sol:7-3;sol:12-9;sol:26-3,written by more than one program
+learn.school,learn,,,cd:cd-07,,
+learn.second,learn,,,cd:cd-69,sol:26-7,
+learn.social,learn,,,cd:cd-48,sol:12-13,
+learn.spss,learn,,,cd:cd-49,ed2:13-1;ed2:13-2,
+learn.stocks,learn,,,cd:cd-39,ed2:20-7;sol:11-13;sol:25-1,
+learn.study,learn,,,cd:cd-42,sol:12-7,
+learn.survey,learn,,,cd:cd-13;cd:cd-14;ed2:5-7,ed2:5-3;ed2:5-5;ed2:5-8;ed2:5-9;ed2:6-4;ed2:10-1;ed2:10-2;ed2:10-3;ed2:17-1;ed2:17-2;ed2:17-3;ed2:17-4;ed2:22-1;ed2:22-2;ed2:22-18;ed2:22-19;ed2:22-20;sol:15-9;sol:19-5,written by more than one program
+learn.survey1,learn,,,cd:cd-33,sol:13-1,
+learn.survey2,learn,,,cd:cd-34,sol:10-13,
+learn.survey2018,learn,,,sol:4-3,,
+learn.test_scores,learn,,,cd:cd-35;ed2:4-1;ed2:5-1,ed2:4-2;ed2:4-3;ed2:4-4;ed2:4-6;ed2:4-7;ed2:4-8;ed2:19-1;ed2:19-2;ed2:19-3;ed2:25-1,written by more than one program
+learn.upper,learn,,,cd:cd-36,ed2:12-2,
+learn.wide,learn,,,cd:cd-61,sol:23-1;sol:23-3,
+bert,work_shared,,,cd:cd-23,ed2:10-13,temporary (WORK) dataset built by Create_Datasets.sas
+division1,work_shared,,,cd:cd-24,ed2:10-14,temporary (WORK) dataset built by Create_Datasets.sas
+division2,work_shared,,,cd:cd-24,ed2:10-14;ed2:10-15,temporary (WORK) dataset built by Create_Datasets.sas
+employee,work_shared,,,cd:cd-22,ed2:10-8;ed2:10-9;ed2:10-10;ed2:10-11,temporary (WORK) dataset built by Create_Datasets.sas
+ernie,work_shared,,,cd:cd-23,ed2:10-13,temporary (WORK) dataset built by Create_Datasets.sas
+hours,work_shared,,,cd:cd-22,ed2:10-8;ed2:10-9;ed2:10-10;ed2:10-11,temporary (WORK) dataset built by Create_Datasets.sas
+new15dec2017,work_shared,,,cd:cd-26,ed2:10-16,temporary (WORK) dataset built by Create_Datasets.sas
+one,work_shared,,,cd:cd-21,ed2:10-4;ed2:10-5;ed2:10-6,temporary (WORK) dataset built by Create_Datasets.sas
+prices,work_shared,,,cd:cd-26,ed2:10-16,temporary (WORK) dataset built by Create_Datasets.sas
+three,work_shared,,,cd:cd-21,ed2:10-5,temporary (WORK) dataset built by Create_Datasets.sas
+two,work_shared,,,cd:cd-21,ed2:10-4;ed2:10-6,temporary (WORK) dataset built by Create_Datasets.sas
+sashelp.heart,sashelp,,,,sol:20-1;sol:20-3;sol:20-5;sol:20-7;sol:20-9;sol:20-11,SAS-supplied sample library
+sashelp.iris,sashelp,,,,ed2:20-5;ed2:20-6;ed2:20-8;ed2:20-9;ed2:20-13,SAS-supplied sample library
+read.'Permanent$'n,excel_sheet,,,,ed2:6-3,worksheet read through an Excel LIBNAME engine
+readit.'soccer$'n,excel_sheet,,,,sol:6-3,worksheet read through an Excel LIBNAME engine
+Data/bank.txt,data_file,Data/bank.txt,1,,ed2:3-6;ed2:3-7;ed2:21-16,
+Data/bankdata.txt,data_file,Data/bankdata.txt,1,,,not referenced by any program
+Data/benzene.txt,data_file,Data/benzene.txt,1,,ed2:22-16,
+Data/blood.txt,data_file,Data/blood.txt,1,,cd:cd-52,
+Data/company.txt,data_file,Data/company.txt,1,,sol:3-3,
+Data/DataXYZ.txt,data_file,Data/DataXYZ.txt,1,,sol:2-5,
+Data/dates.txt,data_file,Data/dates.txt,1,,ed2:9-1;ed2:9-2,
+Data/drugtest.xls,data_file,Data/drugtest.xls,1,,,not referenced by any program
+Data/employee.csv,data_file,Data/employee.csv,1,,sol:3-11,
+Data/employee.txt,data_file,Data/employee.txt,1,,,not referenced by any program
+Data/employeedata.txt,data_file,Data/employeedata.txt,1,,,not referenced by any program
+Data/file_a.txt,data_file,Data/file_a.txt,1,,sol:21-7,
+Data/file_b.txt,data_file,Data/file_b.txt,1,,,not referenced by any program
+Data/geocache.txt,data_file,Data/geocache.txt,1,,,not referenced by any program
+Data/geocaching.txt,data_file,Data/geocaching.txt,1,,sol:3-7;sol:3-9,
+Data/grades.txt,data_file,Data/grades.txt,1,,ed2:8-1;ed2:8-2,
+Data/gym.txt,data_file,Data/gym.txt,1,,cd:cd-59,
+Data/health.txt,data_file,Data/health.txt,1,,ed2:21-12;ed2:21-13,
+Data/id.txt,data_file,Data/id.txt,1,,ed2:12-10,
+Data/List.csv,data_file,Data/List.csv,1,,ed2:3-10;ed2:3-11,
+Data/list.txt,data_file,Data/list.txt,1,,ed2:3-12,
+Data/missing.txt,data_file,Data/missing.txt,1,,ed2:21-1;ed2:21-2,
+Data/mixed_recs.txt,data_file,Data/mixed_recs.txt,1,,,not referenced by any program
+Data/month.txt,data_file,Data/month.txt,1,,ed2:21-5;ed2:21-6;ed2:21-7,
+Data/mydata.csv,data_file,Data/mydata.csv,1,,ed2:3-2;ed2:3-3,
+Data/Mydata.txt,data_file,Data/Mydata.txt,1,,ed2:2-1;ed2:2-2;ed2:3-1,
+Data/numgrades.txt,data_file,Data/numgrades.txt,1,,cd:cd-58;sol:22-5,
+Data/ODS_Example.csv,data_file,Data/ODS_Example.csv,1,,,not referenced by any program
+Data/odsexample.csv,data_file,Data/odsexample.csv,1,,,not referenced by any program
+Data/political.csv,data_file,Data/political.csv,1,,,not referenced by any program
+Data/presidents.csv,data_file,Data/presidents.csv,1,,,not referenced by any program
+Data/rangetest.xls,data_file,Data/rangetest.xls,1,,,not referenced by any program
+Data/Sales.xls,data_file,Data/Sales.xls,1,,,not referenced by any program
+Data/school.txt,data_file,Data/school.txt,1,,cd:cd-07,
+Data/scores.txt,data_file,Data/scores.txt,1,,sol:3-1,
+Data/scores_column.txt,data_file,Data/scores_column.txt,1,,sol:21-3,
+Data/scores_comma.csv,data_file,Data/scores_comma.csv,1,,,not referenced by any program
+Data/short.txt,data_file,Data/short.txt,1,,ed2:21-3;ed2:21-4,
+Data/single.xls,data_file,Data/single.xls,1,,,not referenced by any program
+Data/soccer.cls.csv,data_file,Data/soccer.cls.csv,1,,,not referenced by any program
+Data/Soccer.csv,data_file,Data/Soccer.csv,1,,,not referenced by any program
+Data/soccer.xls,data_file,Data/soccer.xls,1,,sol:6-3,
+Data/stockprices.txt,data_file,Data/stockprices.txt,1,,,not referenced by any program
+Data/stocks.txt,data_file,Data/stocks.txt,1,,sol:2-1,
+Data/survey.txt,data_file,Data/survey.txt,1,,cd:cd-13;cd:cd-14;ed2:5-7,
+Data/survey56.txt,data_file,Data/survey56.txt,1,,ed2:21-15,
+Data/tempdata.txt,data_file,Data/tempdata.txt,1,,,not referenced by any program
+Data/test_scores.txt,data_file,Data/test_scores.txt,1,,sol:21-1,
+Data/testcsv.csv,data_file,Data/testcsv.csv,1,,,not referenced by any program
+Data/three_per_line.txt,data_file,Data/three_per_line.txt,1,,sol:21-11,
+Data/veggies.txt,data_file,Data/veggies.txt,1,,ed2:1-1;ed2:1-2,
+Data/Wages.xls,data_file,Data/Wages.xls,1,,ed2:6-3,
+Data/Wages.xlsx,data_file,Data/Wages.xlsx,1,,,not referenced by any program
+Data/xxx.txt,data_file,Data/xxx.txt,1,,,not referenced by any program
+Data/XYZ.txt,data_file,Data/XYZ.txt,1,,,not referenced by any program
+Data/xyz1.txt,data_file,Data/xyz1.txt,1,,sol:21-9,
+Data/xyz2.txt,data_file,Data/xyz2.txt,1,,sol:21-9,
