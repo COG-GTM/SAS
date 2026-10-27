@@ -189,6 +189,30 @@ def test_create_datasets_untagged_tail(by_key: dict[str, dict[str, object]]) -> 
     assert _split(by_key["cd:cd-71"]["datasets_written"]) == ["learn.grouping"]
 
 
+def test_proc_output_statements_are_writes(
+    by_key: dict[str, dict[str, object]],
+) -> None:
+    assert "means" in by_key["ed2:10-7"]["datasets_written"].split(";")
+    assert "means" not in by_key["ed2:10-7"]["datasets_required"].split(";")
+    assert "many_stats" in by_key["ed2:16-7"]["datasets_written"].split(";")
+
+
+def test_proc_format_cntlin_is_read(by_key: dict[str, dict[str, object]]) -> None:
+    assert "control" in by_key["ed2:22-10"]["datasets_read"].split(";")
+    assert "new_control" in by_key["ed2:22-13"]["datasets_read"].split(";")
+    assert "control" in by_key["sol:22-7"]["datasets_read"].split(";")
+
+
+def test_conditional_infile_is_read(by_key: dict[str, dict[str, object]]) -> None:
+    assert by_key["sol:21-7"]["files_read"] == "Data/file_a.txt;Data/file_b.txt"
+
+
+def test_macro_dataset_argument_is_read(
+    by_key: dict[str, dict[str, object]],
+) -> None:
+    assert "learn.bicycles" in by_key["sol:25-3"]["datasets_required"].split(";")
+
+
 def test_datasets_catalog(programs: list[dict[str, object]]) -> None:
     rows = {str(r["name"]): r for r in gc.build_datasets(programs)}
     assert rows["learn.blood"]["producers"] == "cd:cd-52"

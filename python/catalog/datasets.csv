@@ -1,7 +1,7 @@
 name,kind,path,exists,producers,consumers,notes
 learn.address,learn,,,cd:cd-01,ed2:12-3,
 learn.assign,learn,,,cd:cd-12,ed2:15-13,
-learn.bicycles,learn,,,cd:cd-11,ed2:15-9;ed2:15-10;ed2:15-19;sol:7-7;sol:21-5,
+learn.bicycles,learn,,,cd:cd-11,ed2:15-9;ed2:15-10;ed2:15-19;sol:7-7;sol:21-5;sol:25-3,
 learn.blood,learn,,,cd:cd-52,ed2:10-7;ed2:11-2;ed2:11-3;ed2:11-11;ed2:11-12;ed2:15-20;ed2:16-1;ed2:16-2;ed2:16-3;ed2:16-4;ed2:16-5;ed2:16-6;ed2:16-7;ed2:16-8;ed2:16-9;ed2:16-10;ed2:16-11;ed2:16-12;ed2:16-13;ed2:16-16;ed2:16-17;ed2:17-10;ed2:17-11;ed2:18-1;ed2:18-2;ed2:18-3;ed2:18-4;ed2:18-5;ed2:18-6;ed2:18-7;ed2:18-8;ed2:18-9;ed2:18-10;ed2:18-11;ed2:18-12;ed2:18-13;ed2:18-14;ed2:18-15;ed2:18-16;ed2:18-17;ed2:19-4;ed2:19-5;ed2:19-6;ed2:20-1;ed2:20-2;ed2:20-3;ed2:20-4;ed2:20-10;ed2:20-11;ed2:20-12;ed2:25-2;ed2:25-11;sol:7-5;sol:10-1;sol:10-3;sol:11-3;sol:14-1;sol:15-1;sol:15-7;sol:17-1;sol:17-3;sol:17-7;sol:26-9,
 learn.bloodpressure,learn,,,cd:cd-53,sol:15-5;sol:22-1;sol:22-3,
 learn.careless,learn,,,cd:cd-03,ed2:13-4,
@@ -90,7 +90,7 @@ Data/employee.csv,data_file,Data/employee.csv,1,,sol:3-11,
 Data/employee.txt,data_file,Data/employee.txt,1,,,not referenced by any program
 Data/employeedata.txt,data_file,Data/employeedata.txt,1,,,not referenced by any program
 Data/file_a.txt,data_file,Data/file_a.txt,1,,sol:21-7,
-Data/file_b.txt,data_file,Data/file_b.txt,1,,,not referenced by any program
+Data/file_b.txt,data_file,Data/file_b.txt,1,,sol:21-7,
 Data/geocache.txt,data_file,Data/geocache.txt,1,,,not referenced by any program
 Data/geocaching.txt,data_file,Data/geocaching.txt,1,,sol:3-7;sol:3-9,
 Data/grades.txt,data_file,Data/grades.txt,1,,ed2:8-1;ed2:8-2,

@@ -79,6 +79,8 @@ CD_HEADER_RE = re.compile(
     r"^\s*\*\s*(Data set|Temporary|Program to create|Format used)", re.IGNORECASE
 )
 DATALINES_STMT_RE = re.compile(r"^\s*(datalines|cards|lines)(4?)\s*$", re.IGNORECASE)
+INFILE_RE = r"(?:.*?\b(?:then|else)\s+)?(?:do\s*;\s*)?infile\b\s*(.*)$"
+MACRO_ARG_DS_RE = re.compile(r"^\s*([A-Za-z_]\w*\.[A-Za-z_]\w*)\s*$")
 MACRO_CALL_RE = re.compile(
     r"^\s*%(?!(?:let|put|if|do|end|global|local)\b)\w+\s*\(.*\)\s*$",
     re.DOTALL | re.IGNORECASE,
@@ -487,6 +489,7 @@ class Analyzer:
         flags = dict.fromkeys(FLAG_FIELDS, False)
         dynamic = False
         step = ""  # "data", proc name, or ""
+        macro_ds_args = False
         format_step = False
 
         def add(lst: list[str], item: str | None) -> None:
@@ -520,6 +523,14 @@ class Analyzer:
             first = low.split(None, 1)[0] if low else ""
             rest = stmt[len(first) :].strip()
 
+            if MACRO_CALL_RE.match(stmt):
+                args = stmt[stmt.index("(") + 1 : stmt.rindex(")")]
+                for arg in args.split(","):
+                    am = MACRO_ARG_DS_RE.match(arg.split("=")[-1])
+                    if am:
+                        read(am.group(1))
+                        macro_ds_args = True
+                continue
             if re.search(
                 r"%(macro|let|do|if|put|sysfunc|eval|str|global|local)\b|&[a-z_]|call\s+symputx?\b|symget",
                 low,
@@ -569,6 +580,10 @@ class Analyzer:
                     read(m.group(1))
                     if pname == "sort" and not re.search(r"\bout\s*=", low):
                         write(m.group(1))
+                for m in re.finditer(
+                    r"\bcntlin\s*=\s*(" + NAME_TOKEN + ")", stmt, re.IGNORECASE
+                ):
+                    read(m.group(1))
                 for m in re.finditer(
                     r"\b(?:out|cntlout)\s*=\s*(" + NAME_TOKEN + ")", stmt, re.IGNORECASE
                 ):
@@ -624,6 +639,14 @@ class Analyzer:
                     read(name)
                 continue
 
+            if step and step != "data" and first != "proc":
+                for m in re.finditer(
+                    r"\b(?:out|outstat|outest|cntlout)\s*=\s*(" + NAME_TOKEN + ")",
+                    stmt,
+                    re.IGNORECASE,
+                ):
+                    write(m.group(1))
+
             # DATA step (or global) statements
             m = re.match(
                 r"(?:.*?\b(?:then|else)\s+)?(?:do\s*;\s*)?(set|merge|update|modify)\b\s*(.*)$",
@@ -649,10 +672,12 @@ class Analyzer:
                 flags["retain_by"] = True
             if first == "array":
                 flags["arrays"] = True
-            if first == "infile":
-                target = rest.split(None, 1)[0] if rest else ""
+            m = re.match(INFILE_RE, stmt, re.IGNORECASE)
+            if m and (first == "infile" or re.search(r"\b(then|else)\s+infile\b", low)):
+                inf = m.group(1)
+                target = inf.split(None, 1)[0] if inf else ""
                 if target[:1] in "'\"":
-                    add(files_read, self.file_ref(_quoted(rest)[0]))
+                    add(files_read, self.file_ref(_quoted(inf)[0]))
                 elif target.lower() in ("datalines", "cards"):
                     flags["inline_data"] = True
                 elif target.lower() in self.ctx.filerefs:
@@ -685,6 +710,8 @@ class Analyzer:
             notes.append(
                 "no executable code (comment-only answer or commented-out demonstration)"
             )
+        if macro_ds_args:
+            notes.append("dataset passed as a macro argument is listed as read")
         for lib in sorted(self.aliases):
             notes.append(
                 f"libref {lib.upper()} points at the Learn folder (catalogued as learn.*)"
