@@ -7,6 +7,6 @@ PY="${PYTHON:-python3}"
 "$PY" mockgen.py
 "$PY" sas_runner.py "$@"
 "$PY" run_pyspark.py "$@" 2> build/pyspark.stderr.log
-"$PY" compare.py
+"$PY" compare.py "$@"
 "$PY" render_summary.py
 echo "report: $(pwd)/PARITY_REPORT.md"

@@ -115,10 +115,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--build", default=str(HERE / "build"))
     ap.add_argument("--report", default=str(HERE / "PARITY_REPORT.md"))
+    ap.add_argument("cases", nargs="*", help="case ids (default: all); must match the runs being compared")
     a = ap.parse_args()
     build = Path(a.build)
     results = []
     for c in CASES:
+        if a.cases and c.id not in a.cases:
+            continue
         sres = json.loads((build / "sas" / c.id / "result.json").read_text())
         log = build / "sas" / c.id / f"{c.id}.log"
         sres["invalid_data_notes"] = log.read_text().count("NOTE: Invalid data") if log.exists() else 0
