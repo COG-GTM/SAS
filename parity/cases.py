@@ -78,7 +78,7 @@ CASES: list[Case] = [
          [("cd:HEALTH", []), ("cd:DEMOGRAPHIC", []), ("book:26-3", ["Height65"]),
           ("book:26-7", ["Inner"]), ("book:26-8", ["_sql1"]),
           ("book:26-9", ["_sql1", "_sql2", "_sql3"]), ("book:26-11", ["_sql1"])],
-         unordered={"s26_8__sql1", "s26_9__sql1", "s26_9__sql2", "s26_9__sql3"},
+         unordered={"s26_3_height65", "s26_11__sql1", "s26_8__sql1", "s26_9__sql1", "s26_9__sql2", "s26_9__sql3"},
          sql_capture=True),
 ]
 
