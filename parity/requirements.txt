@@ -1,0 +1,10 @@
+# PySpark side (Java 11/17 required)
+pyspark==3.5.3
+pyarrow>=14
+# blackbox SAS engine runtime deps (see the engine's Dockerfile)
+numpy
+scipy
+duckdb
+openpyxl
+pyreadstat
+matplotlib==3.9.2   # render_summary.py
