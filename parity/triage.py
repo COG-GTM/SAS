@@ -1,27 +1,29 @@
-"""Triage notes for datasets that differ: label -> (classification, explanation).
+"""Triage notes for datasets that differ: label -> (classification, columns it explains, explanation).
 
 Classifications: ENGINE_GAP (blackbox engine deviates from documented SAS behaviour; the PySpark port
 keeps the documented behaviour), TRANSLATION_BUG (PySpark port wrong, not yet fixed).
-A note is only shown when the dataset actually differs in the latest run.
+A note is applied only when the dataset differs in the latest run, only in those columns, with no row-count or
+column-set differences; anything else is reported as UNTRIAGED.
 """
-_SURVEY = ("ENGINE_GAP", "`input ... (Ques1-Ques5)(: $1.);` — the engine ignores the `$` in a grouped informat "
+_SURVEY = ("ENGINE_GAP", {f"Ques{i}" for i in range(1, 6)}, "`input ... (Ques1-Ques5)(: $1.);` — the engine ignores the `$` in a grouped informat "
            "list and creates Ques1-Ques5 as numeric (values 1-5) instead of character $1. SAS reads them as character "
            "(that is why the program attaches the character format `$Likert.`). PySpark keeps them character.")
-NOTES: dict[str, tuple[str, str]] = {
+NOTES: dict[str, tuple[str, set[str], str]] = {
     "s5_7_survey": _SURVEY,
     "s10_3_males": _SURVEY,
     "s10_3_females": _SURVEY,
-    "s8_12_easyway": ("ENGINE_GAP", "`do Group = 'Placebo','Active';` — the engine creates Group as a numeric variable "
+    "s8_12_easyway": ("ENGINE_GAP", {"Group"}, "`do Group = 'Placebo','Active';` — the engine creates Group as a numeric variable "
                       "and every value is missing; SAS creates a character variable (length 7) holding "
                       "'Placebo' for Subj 1-5 and 'Active' for Subj 6-10. All other columns match."),
-    "s9_3_ages": ("ENGINE_GAP", "`Age = yrdif(DOB, VisitDate);` — with no basis argument the engine uses the 'AGE' "
-                  "basis (`_yrdif(ctx, a, b, basis=\"AGE\")` in sasengine/functions.py); the SAS 9.4 documentation "
-                  "gives 'ACT/ACT' as the default basis, which the PySpark port implements. Differences are at most 0.0026 "
-                  "year and only occur where the interval spans a leap day / partial years."),
-    "s12_3_standard": ("ENGINE_GAP", "`propcase(Name)` — the engine also upper-cases the letter after an apostrophe "
+    "s9_3_ages": ("UNVERIFIED_SEMANTICS", {"Age"}, "`Age = yrdif(DOB, VisitDate);` — with no basis argument the "
+                  "engine uses the 'AGE' basis (`_yrdif(ctx, a, b, basis=\"AGE\")` in sasengine/functions.py); the "
+                  "PySpark port uses 'ACT/ACT'. Which one SAS uses when the basis is omitted was not verified against a "
+                  "licensed SAS run in this work, so this is neither claimed as an engine gap nor as a port bug. "
+                  "Differences are at most 0.0026 year."),
+    "s12_3_standard": ("ENGINE_GAP", {"Name"}, "`propcase(Name)` — the engine also upper-cases the letter after an apostrophe "
                        "(O'Brien); SAS's default PROPCASE delimiters are blank / - ( . and tab, so SAS returns "
                        "O'brien (the SAS documentation example gives `Ed O'brien`). PySpark follows SAS."),
-    "s12_17_address": ("ENGINE_GAP", "`infile datalines dlm=' ,'; input ... #3 City & $20. State : $2. Zip : $5.;` — "
+    "s12_17_address": ("ENGINE_GAP", {"City", "State", "Zip"}, "`infile datalines dlm=' ,'; input ... #3 City & $20. State : $2. Zip : $5.;` — "
                        "with the & modifier SAS keeps single embedded blanks and ends the value at two consecutive "
                        "delimiters (', '), giving City='Long Beach', State='NJ'. The engine ends City at the first "
                        "blank ('Long'), shifting State/Zip. Only records whose city has an embedded blank differ."),

@@ -69,6 +69,8 @@ def compare(sas_p: Path, spk_p: Path, unordered: bool) -> dict:
                            f"only in PySpark: {[pl[c]['name'] for c in only_p]}")
     common = [c for c in sl if c in pl]
     tdiff = [c for c in common if sl[c]["type"] != pl[c]["type"]]
+    r["type_diff"] = [sl[c]["name"] for c in tdiff]
+    r["structural"] = bool(only_s or only_p or len(srows) != len(prows))
     if tdiff:
         r["issues"].append("type differs: " + ", ".join(f"{sl[c]['name']} SAS={sl[c]['type']} PySpark={pl[c]['type']}"
                                                         for c in tdiff))
@@ -134,10 +136,13 @@ def main():
                             build / "pyspark" / c.id / f"{lb}.parquet", lb in c.unordered)
                 r.update(label=lb, step=step, dataset=d, unordered=lb in c.unordered)
                 note = NOTES.get(lb)
-                if note and r["status"] == "DIFF":
-                    r["classification"], r["explanation"] = note
+                affected = set(r.get("type_diff", [])) | set(r.get("mismatches", {}))
+                if note and r["status"] == "DIFF" and not r.get("structural") and affected <= note[1]:
+                    r["classification"], r["explanation"] = note[0], note[2]
                 elif r["status"] == "DIFF":
-                    r["classification"], r["explanation"] = "UNTRIAGED", ""
+                    r["classification"] = "UNTRIAGED"
+                    r["explanation"] = (f"Known note ({note[0]}) covers only {sorted(note[1])}; this run differs "
+                                        f"beyond that." if note else "")
                 ds.append(r)
         results.append({"case": c, "sas": sres, "pyspark": pres, "datasets": ds})
     (build / "parity_results.json").write_text(json.dumps(
