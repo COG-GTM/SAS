@@ -13,7 +13,7 @@ def render_report(results, fmt) -> str:
     for r in ds:
         if r["status"] == "DIFF":
             cls[r["classification"]] = cls.get(r["classification"], 0) + 1
-    rows = sum(r.get("rows_sas", 0) for r in ds)
+    rows = sum(r.get("rows_compared", 0) for r in ds)
     cells = sum(r.get("cells_compared", 0) for r in ds)
     out = [
         "# SAS (blackbox engine) vs PySpark parity report",
@@ -36,7 +36,8 @@ def render_report(results, fmt) -> str:
         f"| Missing on one side | {n_miss} |",
         f"| SAS output rows compared | {rows} |",
         f"| Cells compared | {cells} |",
-        f"| SAS log ERROR lines | {sum(len(x['sas']['errors']) for x in results)} |",
+        f"| SAS log ERROR lines | {sum(x['sas']['error_count'] for x in results)} |",
+        f"| SAS runs with non-zero exit code | {sum(1 for x in results if x['sas']['rc'] != 0)} |",
         f"| SAS log `NOTE: Invalid data` lines (expected: deliberately malformed mock fields) | "
         f"{sum(x['sas']['invalid_data_notes'] for x in results)} |",
         f"| PySpark job failures | {sum(1 for x in results if x['pyspark']['error'])} |",
@@ -45,13 +46,14 @@ def render_report(results, fmt) -> str:
         out.append(f"| DIFF classified {k} | {v} |")
     out += ["", "Tolerance: numeric |a-b| <= 1e-9 + 1e-9*max(|a|,|b|); character values compared after removing "
             "trailing blanks; SAS missing == Spark NULL.", "", "## Per case", "",
-            "| Case | What it exercises | SAS steps | Datasets | PASS | DIFF | SAS rows | SAS run (s) | PySpark (s) |",
-            "|---|---|---|---|---|---|---|---|---|"]
+            "| Case | What it exercises | SAS steps | Datasets | PASS | DIFF | SAS rows | SAS rc | SAS run (s) | PySpark (s) |",
+            "|---|---|---|---|---|---|---|---|---|---|"]
     for x in results:
         c, d = x["case"], x["datasets"]
         steps = ", ".join(s.split(":", 1)[1] for s, _ in c.steps)
         out.append(f"| `{c.id}` | {c.title} | {steps} | {len(d)} | {sum(r['status'] == 'PASS' for r in d)} | "
                    f"{sum(r['status'] == 'DIFF' for r in d)} | {sum(r.get('rows_sas', 0) for r in d)} | "
+                   f"{x['sas']['rc']}{' **FAILED**' if x['sas']['rc'] else ''} | "
                    f"{x['sas']['seconds']} | {x['pyspark']['seconds']} |")
     out += ["", "## Per dataset", "", "| Case | Step | Dataset | Status | Rows SAS / PySpark | Cols | Cells | Note |",
             "|---|---|---|---|---|---|---|---|"]

@@ -120,8 +120,9 @@ def run_case(case: Case, engine: str, mock: Path, build: Path) -> dict:
                         "-print", str(root / f"{case.id}.lst"), "-work", str(root / "work")],
                        cwd=root, capture_output=True, text=True, timeout=1800)
     log = (root / f"{case.id}.log").read_text(errors="replace") if (root / f"{case.id}.log").exists() else ""
+    errors = [ln for ln in log.splitlines() if ln.startswith("ERROR")]
     res = {"case": case.id, "rc": p.returncode, "seconds": round(time.time() - t0, 1),
-           "errors": [ln for ln in log.splitlines() if ln.startswith("ERROR")][:20],
+           "error_count": len(errors), "errors": errors[:20],
            "warnings": [ln for ln in log.splitlines() if ln.startswith("WARNING")][:20],
            "datasets": sorted(f.stem for f in out.glob("*.parquet"))}
     (root / "result.json").write_text(json.dumps(res, indent=2))
@@ -135,7 +136,8 @@ def main():
         "BLACKBOX_SAS", str(REPO.parent / "blackbox-engines" / "engines" / "sas" / "bin" / "sas")))
     ap.add_argument("--build", default=str(HERE / "build"))
     a = ap.parse_args()
-    build = Path(a.build)
+    build = Path(a.build).resolve()
+    a.engine = str(Path(a.engine).resolve())
     if not Path(a.engine).exists():
         raise SystemExit(f"blackbox SAS engine not found at {a.engine}; set BLACKBOX_SAS")
     for c in CASES:
@@ -143,7 +145,7 @@ def main():
             continue
         r = run_case(c, a.engine, build / "mock", build)
         print(f"[sas] {c.id:<22} rc={r['rc']} {r['seconds']:>6}s datasets={len(r['datasets'])} "
-              f"errors={len(r['errors'])}")
+              f"errors={r['error_count']}")
 
 
 if __name__ == "__main__":
