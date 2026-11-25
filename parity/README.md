@@ -53,11 +53,12 @@ its source into this repo. Either:
    (`pip install <blackbox-engines>/engines/bteq numpy scipy pyarrow pyreadstat openpyxl duckdb`, matching
    `engines/sas/Dockerfile`), then `export BLACKBOX_SAS=<blackbox-engines>/engines/sas/bin/sas`.
 2. **Container** — `python3 tools/containers.py build sas` in the engine checkout (or pull
-   `ghcr.io/iancmoritz/blackbox-sas` if you have access), then point `BLACKBOX_SAS` at a wrapper:
+   `ghcr.io/iancmoritz/blackbox-sas` if you have access), then point `BLACKBOX_SAS` at a wrapper that mounts
+   only this harness's build directory, at the same absolute path (the runner passes absolute paths):
    ```sh
    #!/bin/sh
-   exec docker run --rm --user "$(id -u):$(id -g)" -v /:/host -w "/host$PWD" blackbox-sas "$@"
+   B=/abs/path/to/SAS/parity/build
+   exec docker run --rm --user "$(id -u):$(id -g)" -v "$B:$B" -w "$B" blackbox-sas "$@"
    ```
-   (paths passed by the runner are absolute, so mount them at the same location, e.g. `-v "$HOME:$HOME"`).
 
 The report in this directory was produced with option 1 (Python 3.12, PySpark 3.5.3, OpenJDK 17).
